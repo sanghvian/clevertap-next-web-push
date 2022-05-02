@@ -17,15 +17,15 @@ const customRuntimeCaching = runtimeCaching.map((entry) => {
 });
 
 const nextConfig = {
-  // images: {
-  //   formats: ['image/avif', 'image/webp'],
-  // },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
   productionBrowserSourceMaps: true,
   webpack: (config) => {
-    // config.module.rules.push({
-    //   test: /\.svgrc$/,
-    //   use: '@svgr/webpack',
-    // });
+    config.module.rules.push({
+      test: /\.svgrc$/,
+      use: '@svgr/webpack',
+    });
 
     return config;
   },
@@ -39,13 +39,13 @@ const bundleAnalyzer = require('@next/bundle-analyzer')({
 const plugins = [
   bundleAnalyzer,
   [
-    nextPwa(
+    nextPwa,
     {
       pwa: {
         dest: 'public',
         // disable: process.env.NODE_ENV === 'development',
         importScripts: [
-          'https://s3-eu-west-1.amazonaws.com/static.wizrocket.com/js/sw.js',
+          'https://s3-eu-west-1.amazonaws.com/static.wizrocket.com/js/sw_webpush.js',
         ],
         buildExcludes: [
           /\.map$/, // dont cache map files
@@ -53,7 +53,7 @@ const plugins = [
         reloadOnOnline: false,
         runtimeCaching: customRuntimeCaching,
       },
-    }),
+    },
   ],
 ];
 

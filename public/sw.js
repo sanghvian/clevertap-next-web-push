@@ -81,7 +81,7 @@ define(['./workbox-74d02f44'], (function (workbox) { 'use strict';
   * See https://goo.gl/2aRDsh
   */
 
-  importScripts("https://s3-eu-west-1.amazonaws.com/static.wizrocket.com/js/sw.js");
+  importScripts("https://s3-eu-west-1.amazonaws.com/static.wizrocket.com/js/sw_webpush.js");
   self.skipWaiting();
   workbox.clientsClaim();
   workbox.registerRoute("/", new workbox.NetworkFirst({

@@ -36,7 +36,7 @@ interface Account {
     
     export const getWindow = (): Window | null => typeof window === 'undefined' ? null : window;
         
-    const getClevertapAccountId = (): string => "TEST-5R6-6W9-WK6Z";
+    const getClevertapAccountId = (): string => process.env.CLEVERTAP_ACCOUNT_ID!;
       
     const clevertap: Clevertap = {
         // TODO : never[]' is not assignable to type 'EventArray<any>
